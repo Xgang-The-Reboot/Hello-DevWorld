@@ -194,8 +194,6 @@ int ScanAndMaxPlus(int cnt){                //本函数的编程受到AI辅助�
     }
     return max;
 
-
-//主函数在这里！
 }
 
 int DelFl(double origin){
