@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "Functions.h"
 
 int NumberExchange(int x,int y){
     int t;
@@ -174,8 +175,8 @@ long long int NumCnt(long long int Num){
  * 主要原因是这种需要上来就先执行一次的情况太常见了
  */
     do{
-        i++;
         Num=Num/10;
+        i++;
     }while(Num!=0);
     //Num=Num/10;
     //for(i=1;Num!=0;i++){
@@ -249,7 +250,7 @@ int main(){
         printf("浮点数测试：%lf\n",floatTest[i2]);
         printf("%d\n",DelFlV2(floatTest[i2]));
     }
-    printf("%d",NumCnt(-0));
+    GuessGuess();
     return 0;
 
 }
