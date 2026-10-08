@@ -1,8 +1,8 @@
 #pragma once
 #include <time.h>
 void GuessGuess(){
-    srand(time(NULL));
-    int number=rand()%(5-100+1);
+    srand(time(NULL));///这一步是设定随机数种子
+    int number=rand()%(5-100+1);//后面的算式是用来确定取值范围的
     printf("调试：本次游戏取：%d\n",number);
     puts("猜数游戏现在开始");
     int Gss;
