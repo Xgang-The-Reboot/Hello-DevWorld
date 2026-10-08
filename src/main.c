@@ -148,7 +148,7 @@ void SwitchCase_Test(){
     }
 }
 
-int ScanAndMax(int x,int y,int z,int M){
+/*int ScanAndMax(int x,int y,int z,int M){
     //这是个旧版比大小函数，新版的在下面
     scanf("%d %d %d",&x,&y,&z);
     if(x>y){
@@ -165,13 +165,22 @@ int ScanAndMax(int x,int y,int z,int M){
     }
     return M;
 }
-
+*/
 long long int NumCnt(long long int Num){
 //难绷int最多存十位数，要想更好用得上long long 超长整型
-    int i;
-    for(i=0;Num!=0;i++){
+    int i=0;
+/*while是先判断条件再循环
+ * 而do/while是先执行一次循环再判断接下来的循环要不要做
+ * 主要原因是这种需要上来就先执行一次的情况太常见了
+ */
+    do{
+        i++;
         Num=Num/10;
-    }
+    }while(Num!=0);
+    //Num=Num/10;
+    //for(i=1;Num!=0;i++){
+    //    Num=Num/10;
+    //}
     return i;
 }
 
@@ -196,7 +205,7 @@ int ScanAndMaxPlus(int cnt){                //本函数的编程受到AI辅助�
 
 }
 
-int DelFl(double origin){
+/*int DelFl(double origin){
     int output;
     if(origin>=0){
         output = origin;
@@ -212,7 +221,7 @@ int DelFl(double origin){
     }
     return output;
 }
-
+*/
 int DelFlV2(double input){
     int output = input; //直接给输入截断掉然后赋给输出，如果是正数的话，那这肯定就结束了
     if(output<0){       //如果不是正数的话，那就是向零截断
@@ -240,6 +249,8 @@ int main(){
         printf("浮点数测试：%lf\n",floatTest[i2]);
         printf("%d\n",DelFlV2(floatTest[i2]));
     }
+    printf("%d",NumCnt(-0));
     return 0;
+
 }
 
