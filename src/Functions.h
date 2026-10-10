@@ -46,8 +46,8 @@ int Reverse(int x){
 int Step(int n){
     int ret=1;
     int n_2=n;
-    for (int i=1 ; i<=n ; i++){     //这个算法比较符合实际规律，
-        ret = ret*n_2;
+    for (int i=1 ; i<n ; i++){     //这个算法比较符合实际规律，但是多了一步
+        ret = ret*n_2;             //比如当 n_2 = 1 的时候就不用再乘了
         n_2--;
     }
     return ret;
