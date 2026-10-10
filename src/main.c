@@ -194,7 +194,7 @@ int ScanAndMaxPlus(int cnt){                //本函数的编程受到AI辅助�
         return 0;
     }
     puts("请输入要比较的数字，格式 'a b c d …… n' ：");
-    scanf("%d",&max);
+    scanf("%d",&max);       //这里的输入先暂存，在之后的for循环一个个读进去
 
 //for语句的优势是集合了“初始化、循环条件、更新行为”三者在一个语句里
 //dpsk指出这种比大小的算法是“擂台式”算法，谁大谁上场，谁小谁被挤下去。
@@ -253,7 +253,7 @@ int main(){
     }
     */
     //GuessGuess();
-    printf("%d\n",Step(5));
+    printf("%d\n",Step(13));
     return 0;
 
 }
