@@ -237,7 +237,8 @@ int main(){
     //int cnt=0;
     //printf("%d",ScanAndMaxPlus(cnt));
     //CashChange_Dusted();
-    int intTest[]={-2,-1,0,1,2,3,4};
+    int intTest[]={-8900,-2,-1,0,1,2,3,4,114514};
+    /*
     float floatTest[]={-2.2,-1.45,-1,0,1,2.33,0.443};
     puts("======================取整函数测试现在开始======================");
     puts("===现在是整数测试===");
@@ -250,8 +251,9 @@ int main(){
         printf("浮点数测试：%lf\n",floatTest[i2]);
         printf("%d\n",DelFlV2(floatTest[i2]));
     }
-    GuessGuess();
+    */
+    //GuessGuess();
+    printf("%d\n",Step(5));
     return 0;
 
 }
-
