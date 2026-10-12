@@ -166,23 +166,6 @@ int ScanAndMax(int x,int y,int z,int M){
    }
    return M;
 }
-long long int NumCnt(long long int Num){
-    //难绷int最多存十位数，要想更好用得上long long 超长整型
-    int i=0;
-    /*while是先判断条件再循环
-     * 而do/while是先执行一次循环再判断接下来的循环要不要做
-     * 主要原因是这种需要上来就先执行一次的情况太常见了
-     */
-    do{
-        Num=Num/10;
-        i++;
-    }while(Num!=0);
-    //Num=Num/10;
-    //for(i=1;Num!=0;i++){
-    //    Num=Num/10;
-    //}
-    return i;
-}
 
 int ScanAndMaxPlus(int cnt){                //本函数的编程受到AI辅助！！
     int CycleCnt,n,max=0;
@@ -204,6 +187,25 @@ int ScanAndMaxPlus(int cnt){                //本函数的编程受到AI辅助�
     return max;
 
 }
+
+long long int NumCnt(long long int Num){
+    //难绷int最多存十位数，要想更好用得上long long 超长整型
+    int i=0;
+    /*while是先判断条件再循环
+     * 而do/while是先执行一次循环再判断接下来的循环要不要做
+     * 主要原因是这种需要上来就先执行一次的情况太常见了
+     */
+    do{
+        Num=Num/10;
+        i++;
+    }while(Num!=0);
+    //Num=Num/10;
+    //for(i=1;Num!=0;i++){
+    //    Num=Num/10;
+    //}
+    return i;
+}
+
 
 /*int DelFl(double origin){
  *    int output;
@@ -313,3 +315,22 @@ int CheckPrime(int input){
     }
     return 1;
 }
+
+void ASCIIout(){
+    puts("你要查询几个字符？");
+    int cnt;
+    scanf("%d",&cnt);
+    puts("请输入：");
+    printf("==>");
+    char crcts0,crcts1;
+    scanf("%c",&crcts0);
+    for (int i=1;i <= cnt;i++){         //参考了之前的代码
+        scanf("%c",&crcts1);
+        printf("%d) 字符 %c 的ASCII编码值是：%d\n",i,crcts1,crcts1);
+    }
+    //puts("请输入你要查询ASCII的字符（单个）：");
+    //char input=getchar();
+    //printf("字符 %c 的ASCII值是： %d",input,input);
+}
+
+
