@@ -297,3 +297,19 @@ int Step(int n){
     //实测两个算法都能正常运行
     return ret;
 }
+
+int CheckPrime(int input){
+    if (input<=1){
+        puts("非法数值：素数首先应该是 大于一的正整数");
+        puts("将返回 -1");
+        return -1;
+    }else{
+        for (int scan = 2;scan < input;scan++){
+            int check=input%scan;
+            if(check == 0){
+                return 0;
+            }
+        }
+    }
+    return 1;
+}
