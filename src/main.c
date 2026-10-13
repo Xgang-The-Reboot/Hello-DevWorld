@@ -3,6 +3,6 @@
 #include "Functions.h"
 
 int main(){
-    ASCIIout();
+    CashChangeV3();
     return 0;
 }

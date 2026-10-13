@@ -121,19 +121,29 @@ void CashChangeV3(){               //本函数的编程受到AI辅助!!
      * “最后输出显示的时候转 str （字符串），再添加 "." 即可”
      * 难点只在"输入怎么带小数进来"，这点确实，也是目前一直觉得很麻烦的问题
      */
-    int price=0,have=0,change=0;
+    int prc0,prc1  ,  hv0,hv1;//这样设计的话会导致输入的 *.0? 的小数位(变量 *1 )直接变成 ?
     puts("请输入商品价格：");
+    printf("===>");
+    scanf("%d.%d",&prc0,&prc1);
+    puts("请输入客人出价：");
+    printf("===>");
+    scanf("%d.%d",&hv0,&hv1);
+    if (prc0<0 || prc1<0 || hv0<0 || hv1<0){
+        puts("出错，你输入了错误的数值");
+        puts("原因：输入了负数，而价格和出价均不可以是负数");
+    }else{
+        int out0=hv0-prc0;
+        int out1=hv1-prc1;
+        if (out1<0){
+            out1=100+out1;
+            out0--;
+        }
+        //减法完毕之后的判断系统之后再写
+        printf("应该找零：%d.%d",out0,out1);
+        int cash0[]={100,50,20,10,5,1};
+        int cash1[]={50,10,1};
+        int i;
 
-    puts("请输入客户出价：");
-
-    if(have<price){
-        change=price-have;
-        puts("客户出价不足！还应支付：");
-    }
-    else{
-        printf("应该找零：");
-        int Cash[] = {10000,5000,2000,1000,500,100,50,10,1};
-        int Ret[] = {0,1,2,3,4,5,6,7,8};
     }
 }
 
@@ -259,7 +269,7 @@ void GuessGuess(){
     printf("猜了共计%d次",Cnt);
 }
 
-int Reverse(int x){
+int NumReverse(int x){   //这里是数字的逆转，或许有字符串的逆转 ( rev 指令：听说你想复现我 )
     /*要想对整数进行逆序，可以这么操作：
      * 输入任意整数 x
      * 当这个数字不是 0 的时候
@@ -332,5 +342,26 @@ void ASCIIout(){
     //char input=getchar();
     //printf("字符 %c 的ASCII值是： %d",input,input);
 }
+
+void FloatToIntTry(){  //学习浮点数换到整数
+/* 之前我一直被浮点数和整数之间的转化问题所困扰（请见 CashChange 系列函数，就在本文件）
+ * 696提醒我可以将小数点位和整数为分别读取
+ * 在落谷的一个WP*（ https://www.luogu.com.cn/problem/solution/P5705 ）中找到了解决方案            *WP：原本是CTF中“题解”的意思，由于编程竞赛中也有类似系统，所以统称 Write uP
+ * > scanf 函数在读取到不符合要读取数据类型的字符时会直接终止读取
+ * 比如 scanf("%d",&a);
+ * 我写入 235.799 因为 "." 不属于要读取的类型（整数不能有小数点），所以本 scanf 仅会读取 "325" 并存放
+ * > scanf 函数读取数据时可以用别的字符占位 读取时必须原封不动读入
+ * 那就好办了
+ */
+    int i,f;
+    scanf("%d.%d",&i,&f);
+    printf("%d.%d\n",f,i);
+
+}
+
+
+
+
+
 
 
