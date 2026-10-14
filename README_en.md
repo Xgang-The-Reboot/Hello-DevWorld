@@ -1,4 +1,4 @@
-[中文](README_en.md)
+[中文](README.md)
 
 # Welcome!
 After a long-time hardwork,I finally started this repo successfully.
