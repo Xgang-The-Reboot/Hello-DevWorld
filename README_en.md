@@ -1,3 +1,5 @@
+[中文](README_en.md)
+
 # Welcome!
 After a long-time hardwork,I finally started this repo successfully.
 It has basic functions,pulling,commiting and pushing.A **great** beginning!

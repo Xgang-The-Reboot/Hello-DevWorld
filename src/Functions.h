@@ -121,30 +121,17 @@ void CashChangeV3(){               //本函数的编程受到AI辅助!!
      * “最后输出显示的时候转 str （字符串），再添加 "." 即可”
      * 难点只在"输入怎么带小数进来"，这点确实，也是目前一直觉得很麻烦的问题
      */
-    int prc0,prc1  ,  hv0,hv1;//这样设计的话会导致输入的 *.0? 的小数位(变量 *1 )直接变成 ?
-    puts("请输入商品价格：");
-    printf("===>");
-    scanf("%d.%d",&prc0,&prc1);
-    puts("请输入客人出价：");
-    printf("===>");
-    scanf("%d.%d",&hv0,&hv1);
-    if (prc0<0 || prc1<0 || hv0<0 || hv1<0){
-        puts("出错，你输入了错误的数值");
-        puts("原因：输入了负数，而价格和出价均不可以是负数");
-    }else{
-        int out0=hv0-prc0;
-        int out1=hv1-prc1;
-        if (out1<0){
-            out1=100+out1;
-            out0--;
-        }
-        //减法完毕之后的判断系统之后再写
-        printf("应该找零：%d.%d",out0,out1);
-        int cash0[]={100,50,20,10,5,1};
-        int cash1[]={50,10,1};
-        int i;
-
-    }
+    /* 有方法了 函数 atol 和 itoa 配合使用可以实现数字和字符串之间的转化
+     * 但是小数位的 .0* 会被切成 .* 的问题还是没有解决方法。这是目前唯一的问题
+     * 我建议自己这个项目先放一放
+     */
+    char prc0[32],prc1[32]  ,  hv0[32],hv1[32];
+    puts("请输入商品价格");
+    printf("==>");
+    scanf("%s.%s",prc0,prc1);
+    puts("请输入客人出价");
+    printf("==>");
+    scanf("%s.%s",hv0,hv1);
 }
 
 void SwitchCase_Test(){
@@ -310,7 +297,8 @@ int Step(int n){
     return ret;
 }
 
-int CheckPrime(int input){
+//这是一对姊妹函数
+int isPrime(int input){
     if (input<=1){
         puts("非法数值：素数首先应该是 大于一的正整数");
         puts("将返回 -1");
@@ -325,6 +313,17 @@ int CheckPrime(int input){
     }
     return 1;
 }
+void listisPrime(int min,int max){
+    for (int i=min;i<=max;i++){
+        if (isPrime(i)==1){
+            printf("%d是素数\n",i);
+        }else if (isPrime(i)==-1);
+         else{
+            printf("%d不是素数\n",i);
+        }
+    }
+}
+//EOF
 
 void ASCIIout(){
     puts("你要查询几个字符？");
