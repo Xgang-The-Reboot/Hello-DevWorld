@@ -2,10 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+
 int NumberExchange(int x,int y){
     int t;
     t=0;
-
     t=x;
     x=y;
     y=t;
@@ -115,23 +115,31 @@ void CashChangeV2(){               //本函数的编程受到AI辅助!!
 }
 
 void CashChangeV3(){               //本函数的编程受到AI辅助!!
-    /* 另外感谢我一位QQ好友的鼎力相助，他提出了很重要的意见：
-     * “现在的游戏基本都只要整数部分了，细化角分厘对游戏性的影响很小”
-     * 我设计这套系统主要是模拟现实收银，所以有细化的需求，他则提出
-     * “最后输出显示的时候转 str （字符串），再添加 "." 即可”
-     * 难点只在"输入怎么带小数进来"，这点确实，也是目前一直觉得很麻烦的问题
-     */
-    /* 有方法了 函数 atol 和 itoa 配合使用可以实现数字和字符串之间的转化
-     * 但是小数位的 .0* 会被切成 .* 的问题还是没有解决方法。这是目前唯一的问题
-     * 我建议自己这个项目先放一放
-     */
-    char prc0[32],prc1[32]  ,  hv0[32],hv1[32];
+    //为什么不统一到分？
+    int prc0 , hv0 ;
+    char prc1[2] , hv1[2];
+    int prcc[2] , hvv[2];
+    for (int i=0 ; i<2 ; i++){
+        prc1[i]= '0' ; hv1[i]= '0' ; //不执行初始化的话，用户要是偷懒没输入小数位就全都是垃圾了
+    }
     puts("请输入商品价格");
     printf("==>");
-    scanf("%s.%s",prc0,prc1);
+    scanf("%d.%c%c",&prc0,&prc1[0],&prc1[1]);
     puts("请输入客人出价");
     printf("==>");
-    scanf("%s.%s",hv0,hv1);
+    scanf("%d.%c%c",&hv0,&hv1[0],&hv1[1]);
+    for (int i=0 ; i<2 ; i++){
+        prcc[i] = prc1[i] - '0'; // - '0' 可以实现单个数字字符到数字的转化
+        hvv[i] = hv1[i] - '0';
+    }
+    int CentPrc = prc0 * 100 + prcc[0] * 10 + prcc[1];
+    int CentHv = hv0 * 100 + hvv[0] * 10 + hvv[1];
+    int CentDiff = CentHv - CentPrc ;
+    int out0 , out1[2];
+    out0 = CentDiff/100 ;
+    out1[0] = (CentDiff % 100) / 10 ;
+    out1[1] = (CentDiff % 100) % 10 ;
+    printf("应该找零：%d.%d%d",out0,out1[0],out1[1]);
 }
 
 void SwitchCase_Test(){
